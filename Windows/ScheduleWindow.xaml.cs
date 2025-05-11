@@ -27,7 +27,7 @@ namespace SchedulePlanner.Windows
         {
             InitializeComponent();
             loadDataGrid();
-            HideElementsFromStudents();
+            ProccessWindowForStudents();
         }
 
         public void UpdateSchedule()
@@ -35,7 +35,7 @@ namespace SchedulePlanner.Windows
             loadDataGrid();
         }
 
-        public void HideElementsFromStudents()
+        public void ProccessWindowForStudents()
         {
             if (Session.IsStudent())
             {
@@ -65,6 +65,24 @@ namespace SchedulePlanner.Windows
                                  .OrderBy(s => s.TimeStart)
                                  .ToList();
 
+                if (Session.IsStudent())
+                {
+                    var studentGroup = db.Student
+                        .Where(s => s.Login == Session.CurrentUserLogin)
+                        .Select(s => s.GroupID)
+                        .FirstOrDefault();
+
+                    if (studentGroup != 0)
+                    {
+                        var groupTitle = db.Groups
+                            .Where(g => g.Id == studentGroup)
+                            .Select(g => g.Title)
+                            .FirstOrDefault();
+
+                        schedules = schedules.Where(s => s.GroupTitle == groupTitle).ToList();
+                    }
+                }
+
                 ScheduleDataGrid.ItemsSource = schedules;
             }
         }
@@ -79,6 +97,14 @@ namespace SchedulePlanner.Windows
 
             AddLessonWindow addLessonWindow = new AddLessonWindow(this);
             addLessonWindow.Show();
+        }
+
+        private void lookMarksButton_Click(object sender, RoutedEventArgs e)
+        {
+            StudentJournal journal = new StudentJournal(); 
+            journal.Show();
+
+            this.Close();
         }
     }
 }

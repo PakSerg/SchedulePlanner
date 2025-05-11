@@ -23,10 +23,23 @@ namespace SchedulePlanner
         {
             InitializeComponent();
 
-            EnterDevMode();
+            EnterDevModeForStudent();
+
+            //EnterDevModeForTeacher
         }
 
-        private void EnterDevMode()
+        //private void EnterDevModeForStudent()
+        //{
+        //    Session.IsLoggedIn = true;
+        //    Session.typeUser = "student";
+        //    Session.CurrentUserLogin = "vika.k";
+
+        //    ScheduleWindow scheduleWindow = new ScheduleWindow();
+        //    scheduleWindow.Show();
+        //    this.Close(); 
+        //}
+
+        private void EnterDevModeForTeacher()
         {
             Session.IsLoggedIn = true;
             Session.typeUser = "teacher";
@@ -34,9 +47,7 @@ namespace SchedulePlanner
 
             ScheduleWindow scheduleWindow = new ScheduleWindow();
             scheduleWindow.Show();
-            this.Close(); 
-
-
+            this.Close();
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
