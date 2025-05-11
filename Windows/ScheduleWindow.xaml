@@ -20,6 +20,6 @@
                 <DataGridTextColumn Header="Преподаватель" Binding="{Binding TeacherName}" Width="160" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="lookMarksButton" Content="Посмотреть оценки" HorizontalAlignment="Right" Margin="0,16,189,0" VerticalAlignment="Top" Height="33" Width="158" Click="lookMarksButton_Click"/>
+        <Button x:Name="lookMarksButton" Content="Посмотреть оценки" HorizontalAlignment="Right" Margin="0,16,10,0" VerticalAlignment="Top" Height="33" Width="158" Click="lookMarksButton_Click"/>
     </Grid>
 </Window>

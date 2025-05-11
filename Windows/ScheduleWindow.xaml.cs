@@ -27,7 +27,7 @@ namespace SchedulePlanner.Windows
         {
             InitializeComponent();
             loadDataGrid();
-            ProccessWindowForStudents();
+            ProccessWindowForRole();
         }
 
         public void UpdateSchedule()
@@ -35,11 +35,15 @@ namespace SchedulePlanner.Windows
             loadDataGrid();
         }
 
-        public void ProccessWindowForStudents()
+        public void ProccessWindowForRole()
         {
             if (Session.IsStudent())
             {
                 addLessonButton.Visibility = Visibility.Hidden;
+            }
+            else if (Session.IsTeacher())
+            {
+                lookMarksButton.Visibility = Visibility.Hidden;
             }
         }
 

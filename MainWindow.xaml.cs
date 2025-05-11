@@ -23,7 +23,7 @@ namespace SchedulePlanner
         {
             InitializeComponent();
 
-            EnterDevModeForStudent();
+            //EnterDevModeForStudent();
 
             //EnterDevModeForTeacher
         }
@@ -90,6 +90,25 @@ namespace SchedulePlanner
                     this.Close();
 
                     return;
+                }
+                else
+                {
+                    var student = db.Student.FirstOrDefault(p => p.Login == login && p.Password == password);
+                    if (student == null)
+                    {
+                        MessageBox.Show("Введены неверные данные", "Ошибка входа");
+                        return;
+                    }
+
+                    string typeUser = "student";
+
+                    Session.IsLoggedIn = true;
+                    Session.typeUser = typeUser;
+                    Session.CurrentUserLogin = login;
+
+                    ScheduleWindow scheduleWindow = new ScheduleWindow();
+                    scheduleWindow.Show();
+                    this.Close();
                 }
             }
         }
