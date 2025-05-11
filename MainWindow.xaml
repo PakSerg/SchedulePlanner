@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulePlanner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Вход" Height="450" Width="800">
     <Grid>
+        <RadioButton x:Name="radioIsStudent" Content="Я студент" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="radioIsTeacher" Content="Я преподаватель" HorizontalAlignment="Center" Margin="0,284,0,0" VerticalAlignment="Top"/>
+        <Label Content="Вход" HorizontalAlignment="Center" Margin="0,71,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Button x:Name="loginButton" Content="Войти" HorizontalAlignment="Center" Margin="0,338,0,0" VerticalAlignment="Top" Height="33" Width="158" Click="loginButton_Click"/>
+        <TextBox x:Name="loginTextbox" HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="14"/>
+        <TextBox x:Name="passwordTextbox" HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="14"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="310,138,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="310,191,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

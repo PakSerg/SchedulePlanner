@@ -1,0 +1,21 @@
+﻿<Window x:Class="SchedulePlanner.Windows.StudentJournal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SchedulePlanner.Windows"
+        mc:Ignorable="d"
+        Title="StudentJournal" Height="450" Width="800">
+    <Grid>
+        <Label Content="Оценки" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Button x:Name="addLessonButton" Content="Перейти к расписанию" HorizontalAlignment="Right" Margin="0,16,10,0" VerticalAlignment="Top" Height="33" Width="158" Click="addLessonButton_Click"/>
+        <DataGrid x:Name="Schedule_DataGrid" AutoGenerateColumns="False" BorderBrush="Transparent" BorderThickness="0" Background="#FFEDF3F7"
+          ColumnHeaderStyle="{DynamicResource ColumnHeaderStyle}" CellStyle="{DynamicResource DataGridCellStyle}" Margin="0,60,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Предмет" IsReadOnly="True" Width="200" Binding="{Binding Subject}"/>
+                <DataGridTextColumn Header="Преподаватель" IsReadOnly="True" Width="150" Binding="{Binding Teacher}"/>
+                <DataGridTextColumn Header="Оценка" IsReadOnly="True" Width="110" Binding="{Binding Mark}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
