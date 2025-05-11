@@ -11,38 +11,38 @@ IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Groups')
 BEGIN
     CREATE TABLE Groups (
         id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-        title VARCHAR(255) NOT NULL
+        title NVARCHAR(255) NOT NULL
     );
 END
 
 CREATE TABLE Student (
     id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    login VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,  
+    name NVARCHAR(255) NOT NULL,
+    login NVARCHAR(255) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL,  
     groupID INT NOT NULL,           
     FOREIGN KEY (groupID) REFERENCES Groups(id)
 );
 
 CREATE TABLE Teacher (
     id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    login VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,  
-    specialization VARCHAR(255) NOT NULL
+    name NVARCHAR(255) NOT NULL,
+    login NVARCHAR(255) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL,  
+    specialization NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Class (
     id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    title VARCHAR(255) NOT NULL, 
-    type VARCHAR(255) NOT NULL
+    title NVARCHAR(255) NOT NULL, 
+    type NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE [Subject] (
     id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    title VARCHAR(255) NOT NULL, 
+    title NVARCHAR(255) NOT NULL, 
     hourAll INT NOT NULL,
-    ending VARCHAR(255) NOT NULL
+    ending NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE SpecializationSubject (
@@ -70,7 +70,7 @@ CREATE TABLE Journal (
     subjectID INT NOT NULL,   
     teacherID INT NOT NULL,  
     scheduleID INT NOT NULL, 
-    value VARCHAR(255) NOT NULL,
+    value NVARCHAR(255) NOT NULL,
     FOREIGN KEY (subjectID) REFERENCES [Subject](id),       
     FOREIGN KEY (teacherID) REFERENCES Teacher(id),
     FOREIGN KEY (scheduleID) REFERENCES Schedule(id)
@@ -78,11 +78,11 @@ CREATE TABLE Journal (
 
 CREATE TABLE JournalHomework (
     id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    title VARCHAR(255) NOT NULL, 
-    description VARCHAR(255) NOT NULL, 
+    title NVARCHAR(255) NOT NULL, 
+    description NVARCHAR(255) NOT NULL, 
     deadline DATETIME,
     subjectID INT NOT NULL,    
     scheduleID INT NOT NULL, 
     FOREIGN KEY (subjectID) REFERENCES [Subject](id),       
     FOREIGN KEY (scheduleID) REFERENCES Schedule(id)
-); 
+);
